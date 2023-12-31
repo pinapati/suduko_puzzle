@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sudoku Puzzle</title>
+  <style>
+    /* Add some styling if needed */
+    table {
+      border-collapse: collapse;
+      font-size: 20px;
+    }
+    td {
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      border: 1px solid #000;
+    }
+    input {
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Sudoku Puzzle</h1>
+
+<table id="sudokuTable">
+  <!-- Include the Sudoku puzzle here -->
+  <!-- Replace each 0 with an input field for users to fill -->
+</table>
+
+<script>
+  // JavaScript to handle user input and check for correctness
+  // Replace this with the actual Sudoku puzzle and clues
+
+  // Example puzzle
+  const puzzle = [
+    [3, 0, 7, 0, 0, 8, 0, 1, 0, 5],
+    // ... (replace 0s with clues)
+  ];
+
+  // Function to create the Sudoku table
+  function createSudokuTable() {
+    const table = document.getElementById('sudokuTable');
+    for (let i = 0; i < 9; i++) {
+      const row = table.insertRow();
+      for (let j = 0; j < 9; j++) {
+        const cell = row.insertCell();
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.maxLength = 1;
+        input.addEventListener('input', () => checkCorrectness(i, j, input.value));
+        cell.appendChild(input);
+      }
+    }
+    fillInitialValues(); // Fill initial values based on the puzzle
+  }
+
+  // Function to fill initial values in the Sudoku table
+  function fillInitialValues() {
+    for (let i = 0; i < 9; i++) {
+      for (let j = 0; j < 9; j++) {
+        const inputValue = puzzle[i][j];
+        if (inputValue !== 0) {
+          document.getElementById('sudokuTable').rows[i].cells[j].children[0].value = inputValue;
+          document.getElementById('sudokuTable').rows[i].cells[j].children[0].disabled = true;
+        }
+      }
+    }
+  }
+
+  // Function to check correctness
+  function checkCorrectness(row, col, value) {
+    // Add your logic to check if the entered value is correct
+    // You may want to compare it with the solution or use the mod 10 clues
+    // Provide feedback to the user if the value is incorrect
+  }
+
+  // Call the function to create the Sudoku table
+  createSudokuTable();
+</script>
+
+</body>
+</html>
